@@ -1,0 +1,122 @@
+.item {
+  height: 430px;
+  padding: 1% 15%;
+
+  img {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+.carousel-holder {
+  margin-bottom: 30px;
+}
+
+.carousel-control, .item {
+  border-radius: 4px;
+}
+
+.caption {
+  height: 90px;
+  overflow: hidden;
+  .book {
+    font-size: 14px;
+  }
+}
+
+.caption h4 {
+  text-align: center;
+}
+
+.thumbnail img {
+  width: 100%
+}
+
+.thumbnail img.preview {
+  width: 300px;
+  float: left;
+  padding: 15px;
+}
+
+.ratings {
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #d17581;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.thumbnail .caption-full {
+  padding: 9px;
+  color: #333;
+}
+
+footer {
+  margin: 50px 0;
+}
+
+.checkout-bar{
+  margin-bottom: 20px;
+}
+
+span.price {
+  font-weight: bold;
+}
+
+.preview {
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.text-center {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.form-inline {
+  .coupon, 
+  .checkout, 
+  .update {
+    float: left;
+    width: 30%;
+    margin-left: 10px;
+  }  
+}
+
+h3.page-header {
+  margin: 30px 0 0px;
+}
+
+.price-p {
+  float: left;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.form-group {
+  .quantity {
+    width: 70px;
+    margin-left: 10px;
+  }
+}
+
+.add-book {
+  width: 200px;
+}
+
+.book-info {
+  padding-right: 40px;
+}
+
+h1.title {
+  margin-bottom: 0px;
+}
+
+span.author {
+  margin-bottom: 10px;  
+  display: block;
+}
