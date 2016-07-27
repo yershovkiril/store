@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'pg'
 gem 'carrierwave'
+gem 'fog'
 gem 'mini_magick'
 gem 'aasm'
 gem 'devise'
