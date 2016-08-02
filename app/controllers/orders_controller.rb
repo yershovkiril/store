@@ -37,11 +37,8 @@ class OrdersController < ApplicationController
   private
   
   def redirect_path
-    if params.key?(:checkout)
-      redirect_to checkout_index_path
-    else
-      redirect_to cart_path
-    end
+    redirect_url = params.key?(:checkout) ? checkout_index_path : cart_path
+    redirect_to redirect_url
   end
   
   def check_order_in_progress
