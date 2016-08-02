@@ -24,8 +24,8 @@ feature 'Categories' do
   scenario 'user can see path relative to the home page (breadcrumb)' do
     visit(category_path(history))
     
-    expect(page.find('.breadcrumb')).to have_link('Home')
-    expect(page.find('.breadcrumb')).to have_link('Shop')
+    expect(page.find('.breadcrumb')).to have_link('HOME')
+    expect(page.find('.breadcrumb')).to have_link('SHOP')
     expect(page.find('.breadcrumb')).to have_css('li.active', text: 'History')
   end
 end

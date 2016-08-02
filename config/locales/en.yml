@@ -1,24 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   activerecord:
     attributes:
@@ -41,11 +20,14 @@ en:
         password: Password
         password_confirmation: Password confirmation
         current_password: Current password
-  # title: BookStore
-  home: Home
-  shop: Shop
+  book: Book
+  title: The Bookstore
+  welcome: Welcome to our amazing Bookstore! Choose anything you wish, we'll ship it anywhere
+  home: HOME
+  shop: SHOP
   settings: Settings
   orders: Orders
+  order_title: Order
   sign_out: Sign out
   sign_in: Sign in
   sign_up: Sign up
@@ -78,7 +60,7 @@ en:
     sign_up: Sign up
     fogot_password: Forgot your password?
   order:
-    price: Price
+    price: 'Price:'
     quantity: Quantity
     total: Total
     order_total: 'Order Total:'
@@ -94,12 +76,17 @@ en:
     add_to_cart: ADD TO CART
     quantity: Quantity
     cart: CART
-    empty: EMPTY
+    empty: Empty cart
+    continue: Continue shopping
+    code: Coupon code
+    update: Update
+    shopping_cart: Shopping cart
   credit_card:
     expiration_date: Expiration date
     month: Month
     year: Year
   checkout:
+    checkout: Checkout
     billing_address: Billing address
     shipping_address: Shipping address
     use_billing: Use Billing Address
@@ -119,7 +106,10 @@ en:
   review:
     add: Add
     cancel: Cancel
+    new: Leave a Review
     review_for: New review for
+    review: Reviews
+    text_review: Text review
     flashes:
       created: 'Review was successfully created.'
   wicked:

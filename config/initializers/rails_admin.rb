@@ -20,8 +20,10 @@ RailsAdmin.config do |config|
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
   config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
+    dashboard                  
+    index do
+      except ['CreditCard']
+    end                        
     new
     export
     bulk_delete
@@ -31,19 +33,45 @@ RailsAdmin.config do |config|
     show_in_app do
       except ['Order']
     end
-
+  
     config.model 'Order' do
       edit do
         field :state, :enum do
           enum do
-            bindings[:object].aasm.states.map(&:name)
+            bindings[:object].aasm.states(:permitted => true).map(&:name)
           end
         end
       end
     end
+  
+    config.model 'Author' do
+      object_label_method :full_name
+      field :biography, :ck_editor
+      include_all_fields
+      exclude_fields :books
+    end
+  
+    config.model 'Book' do
+      include_all_fields
+      field :full_description, :ck_editor
+      exclude_fields :order_items, :reviews
+    end
+  
+    config.model 'Category' do
+      exclude_fields :books
+    end
+  
+    config.model 'Coupon' do
+      edit do
+        exclude_fields :orders
+      end
+    end
+  
+    config.model 'Review' do
+      edit do
+        field :approved
+      end
+    end
 
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
   end
 end

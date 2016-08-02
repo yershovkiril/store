@@ -42,11 +42,15 @@ class CheckoutForm
 
   def save_by_step
     case step
-    when :address then shipping_address.save && billing_address.save
+    when :address then save_addresses
     when :payment then credit_card.save
     end
   end
-
+  
+  def save_addresses
+    shipping_address.save && billing_address.save
+  end
+  
   def bind_address
     shipping_address.assign_attributes(shipping_address_attributes)
     billing_address.assign_attributes(billing_address_attributes)

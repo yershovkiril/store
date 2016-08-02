@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   before_action :check_order_in_progress, only: [:edit, :update]
   
+  def index
+    @history = OrderHistory.new(current_user)
+  end
+  
   def show
     @order = Order.find(params[:id]).decorate
   end
@@ -18,11 +22,7 @@ class OrdersController < ApplicationController
   
   def update
     if @order.update(order_params)
-      if params.key?(:checkout)
-        redirect_to checkout_index_path
-      else
-        redirect_to cart_path
-      end
+      redirect_path
     else
       flash.now[:danger] = "Invalid coupon code."
       render 'edit'
@@ -35,6 +35,14 @@ class OrdersController < ApplicationController
   end
   
   private
+  
+  def redirect_path
+    if params.key?(:checkout)
+      redirect_to checkout_index_path
+    else
+      redirect_to cart_path
+    end
+  end
   
   def check_order_in_progress
     @order = order_in_progress.decorate

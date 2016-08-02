@@ -3,6 +3,19 @@ require 'rails_helper'
 RSpec.describe OrdersController, type: :controller do
   let(:order) { create(:order) }
   
+  describe 'GET #index' do
+    it 'assign history' do
+      allow(OrderHistory).to receive(:new).and_return(double('history'))
+      get :index
+      expect(assigns(:history)).not_to be_nil
+    end
+    
+    it 'renders show view' do
+      get :index
+      expect(response).to render_template(:index)
+    end
+  end
+  
   describe 'GET #show' do
     let(:user) { FactoryGirl.create(:user) }
     

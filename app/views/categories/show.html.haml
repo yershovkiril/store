@@ -2,9 +2,9 @@
   - content_for(:navigation) do
     %ol.breadcrumb
       %li
-        = link_to 'Home', root_path
+        = link_to t('home'), root_path
       %li
-        = link_to 'Shop', books_path
+        = link_to t('shop'), books_path
       %li.active
         = @category.name
         

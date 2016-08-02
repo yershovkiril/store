@@ -10,6 +10,7 @@
             %h3.page-header= t('checkout.billing_address')
   
             = error_messages_for(@checkout_form.billing_address)
+            %p.margin
             = render('address/form', f: bill_form)
   
         .col-md-6

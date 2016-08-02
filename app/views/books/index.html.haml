@@ -1,8 +1,8 @@
-= provide(:title, 'Shop')
+= provide(:title, t('shop'))
 .container
   .row
     .col-md-9
-      %h1 Shop
+      %h1= t('shop')
       = render @books
       = paginate @books
     .col-md-3

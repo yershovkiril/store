@@ -48,7 +48,7 @@ $(document).ready(function(){
   	$('.sign-in').addClass('active');
   } else if(url.indexOf('users/sign_up') !== -1) {
   	$('.sign-up').addClass('active');
-  }	else if(url.indexOf('user') !== -1) {
+  }	else if(url.indexOf('orders') !== -1) {
   	$('.orders').addClass('active');
   } else if(url.indexOf('/') !== -1) {
   	$('.home').addClass('active');

@@ -1,27 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_user, except: [:show]
-  
-  def show
-    @history = OrderHistory.new(current_user)
-  end
   
   def edit
   end
 
   def update
-    if @user.update(user_params)
+    assign_address_to_user
+    if current_user.update(user_params)
       flash[:notice] = t('user.flashes.account_updated')
-      redirect_to edit_user_path
-    else
-      render :edit
-    end
-  end
-  
-  def update_password
-    if @user.update_with_password(user_params)
-      sign_in @user, bypass: true
-      flash[:notice] = t('user.flashes.password_updated')
       redirect_to edit_user_path
     else
       render :edit
@@ -30,8 +16,15 @@ class UsersController < ApplicationController
   
   private
   
-  def find_user
-    @user = current_user    
+  def assign_address_to_user
+    case user_params.keys[0]
+    when 'billing_address_attributes'
+      current_user.billing_address ? current_user.billing_address.delete : ''
+      current_user.billing_address = Address.create(user_params['billing_address_attributes'])
+    when 'shipping_address_attributes'
+      current_user.shipping_address ? current_user.shipping_address.delete : ''
+      current_user.shipping_address = Address.create(user_params['shipping_address_attributes'])
+    end
   end
 
   def user_params

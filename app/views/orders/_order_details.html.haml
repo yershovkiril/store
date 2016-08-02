@@ -6,8 +6,4 @@
       %th= t('order.total')
     %tbody
       - orders.each do |order|
-        %tr
-          %td= order.ref
-          %td= order.completed_at
-          %td= number_to_currency(order.total)
-          %td= link_to(t('order.view'), order)
+        = render 'order_info', order: order

@@ -7,7 +7,7 @@
     %td
       = number_to_currency(order_book.price)
     %td
-      = item_book.number_field :quantity, min: 1, class: 'form-control'
+      = item_book.number_field :quantity, min: 1, max: order_book.book.in_stock, class: 'form-control'
     %td
       = number_to_currency(order_book.subtotal)
       = link_to order_book_path(order_book), method: :delete, class: 'delete' do

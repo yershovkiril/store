@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ReviewsController, type: :controller do
   let!(:book) { FactoryGirl.create(:book) }
+
   before do 
     sign_in FactoryGirl.create(:user)
   end
@@ -19,7 +20,6 @@ RSpec.describe ReviewsController, type: :controller do
   end
   
   describe 'POST #create' do
-    
     context 'save with valid attributes' do
       it 'save new review in the database' do
         expect {
@@ -46,5 +46,12 @@ RSpec.describe ReviewsController, type: :controller do
       end 
     end
   end
-
+  
+  context 'user can not create review unless sign in' do
+    it 'redirect user to login page' do
+      sign_out :user
+      get :new, book_id: book.id
+      expect(assigns(:review)).to redirect_to(new_user_session_path)
+    end
+  end
 end

@@ -23,8 +23,6 @@ feature 'Add review' do
     click_on('Add')
     
     expect(page).to have_content("Text review can't be blank")
-    
-    
   end
   
   scenario 'no login user tries to add review' do

@@ -1,0 +1,11 @@
+%tr
+  %td
+    = image_tag(order_book.book.image.thumb, class: 'img-responsive')
+  %td
+    = link_to(order_book.book_title, book_path(order_book.book))
+  %td
+    = number_to_currency(order_book.price)
+  %td
+    = order_book.quantity
+  %td
+    = number_to_currency(order_book.subtotal)

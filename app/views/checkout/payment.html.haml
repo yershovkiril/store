@@ -20,7 +20,7 @@
                 = pay_form.select :exp_month, (1..12), {include_blank: t('credit_card.exp_month')},
                     { class: 'form-control' }
                 = pay_form.select :exp_year, (2016..2021), {include_blank: t('credit_card.exp_year')},
-                    class: 'form-control', placeholder: 'Year'
+                    class: 'form-control', placeholder: t('credit_card.year')
   
             .form-group
               = pay_form.label :cvv

@@ -23,11 +23,11 @@
             %td= number_to_currency(@order.coupon_discount)
   .box-footer
     .pull-left
-      = link_to 'Empty cart', empty_cart_path, method: :patch, class: "btn btn-default"
-      = link_to 'Continue shopping', books_path, class: "btn btn-default"
+      = link_to t('cart.empty'), empty_cart_path, method: :patch, class: "btn btn-default"
+      = link_to t('cart.continue'), books_path, class: "btn btn-default"
         
     .pull-right
       .form-inline
-        = f.text_field :code, placeholder: 'Coupon code', class: 'form-control coupon'
-        = f.submit 'Update', class: "btn btn-success update"
-        = f.submit 'Checkout', name: 'checkout', class: "btn btn-primary checkout"
+        = f.text_field :code, placeholder: t('cart.code'), class: 'form-control coupon'
+        = f.submit t('cart.update'), class: "btn btn-success update"
+        = f.submit t('checkout.checkout'), name: 'checkout', class: "btn btn-primary checkout"

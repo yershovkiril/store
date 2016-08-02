@@ -1,17 +1,17 @@
 %header.navbar.navbar-fixed-top.navbar-inverse
   .container
-    = link_to "The Bookstore", root_path, id: "logo"
+    = link_to t('title'), root_path, id: "logo"
     %ul.nav.navbar-nav.navbar-left
-      %li.home= link_to "HOME", root_path
-      %li.shop= link_to "SHOP", books_path
+      %li.home= link_to t('home'), root_path
+      %li.shop= link_to t('shop'), books_path
       %li.cart= render('shared/cart')
     - if user_signed_in?
       %ul.nav.navbar-nav.navbar-right
-        %li.settings= link_to "Settings", edit_user_path
-        %li.orders= link_to "Orders",  user_path
-        %li= link_to 'Sign out', destroy_user_session_path, :method => :delete
+        %li.settings= link_to t('setings.setings'), edit_user_path
+        %li.orders= link_to t('orders'),  orders_path
+        %li= link_to t('sign_out'), destroy_user_session_path, :method => :delete
     - else 
       %ul.nav.navbar-nav.navbar-right
-        %li.sign-in= link_to "Sign in", new_user_session_path 
-        %li.sign-up= link_to "Sign up", new_user_registration_path
+        %li.sign-in= link_to t('sign_in'), new_user_session_path 
+        %li.sign-up= link_to t('sign_up'), new_user_registration_path
       

@@ -1,0 +1,5 @@
+%tr
+	%td= order.ref
+	%td= order.completed_at
+	%td= number_to_currency(order.total)
+	%td= link_to(t('order.view'), order)

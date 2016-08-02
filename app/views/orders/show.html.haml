@@ -1,5 +1,3 @@
 .container
-  %h1 
-    Order
-    = @order.ref
+  %h1= t('order_title') + ' ' + @order.ref
   = render('shared/order_details', order: @order)

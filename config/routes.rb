@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-
-
   root 'home#index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' } 
-  #controllers: { sessions: 'devise/sessions' }
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', passwords: "users/passwords" } 
   
   resources :books, only: [:index, :show] do
     resources :reviews, only: [:new, :create]
@@ -13,7 +10,7 @@ Rails.application.routes.draw do
   
   resources :categories, only: [:show]
   
-  resources :orders, only: [:show, :edit, :update] do
+  resources :orders, only: [:index, :show, :edit, :update] do
     post :add_book, on: :collection
   end
   
@@ -23,7 +20,8 @@ Rails.application.routes.draw do
   get '/cart', to: 'orders#edit', as: :cart
   patch '/cart/empty', to: 'orders#empty_cart', as: :empty_cart
   
+  
   resource :user do
-    patch 'update_password'
+    patch 'update_password', to: 'users/passwords#update', as: :update_password 
   end
 end

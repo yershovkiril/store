@@ -36,5 +36,4 @@ class ApplicationController < ActionController::Base
       current_user.orders.in_progress
     end
   end
-  
 end
