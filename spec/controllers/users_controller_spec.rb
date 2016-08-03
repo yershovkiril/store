@@ -31,7 +31,7 @@ RSpec.describe UsersController, type: :controller do
       
       it 'sends success notice' do
         put :update, user: user_params
-        expect(flash[:notice]).to eq 'Account was successfully updated.'
+        expect(flash[:notice]).to eq I18n.t('user.flashes.account_updated')
       end
       
       it 'redirect to settings page' do

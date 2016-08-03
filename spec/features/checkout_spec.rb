@@ -12,9 +12,9 @@ feature 'Checkout' do
       
       click_on('Checkout')
       fill_in_address_for('billing')
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
-      expect(page).to have_content('Shipping methods')
+      expect(page).to have_content(I18n.t('checkout.ship_methods'))
       expect(page).to have_current_path(checkout_path(:delivery))
     end
   end
@@ -25,12 +25,12 @@ feature 'Checkout' do
       
       click_on('Checkout')
       fill_in_address_for('billing')
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
       choose('checkout_form[shipment_id]')
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
-      expect(page).to have_content('Credit Card')
+      expect(page).to have_content(I18n.t('checkout.credit_card'))
       expect(page).to have_current_path(checkout_path(:payment))
     end
   end
@@ -41,13 +41,13 @@ feature 'Checkout' do
       
       click_on('Checkout')
       fill_in_address_for('billing')
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
       choose('checkout_form[shipment_id]')
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
       fill_in_credit_card
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
       expect(page).to have_current_path(checkout_path(:confirm))
     end
@@ -59,15 +59,15 @@ feature 'Checkout' do
       
       click_on('Checkout')
       fill_in_address_for('billing')
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
       choose('checkout_form[shipment_id]')
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
       fill_in_credit_card
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
-      click_on('Place Order')
+      click_on(I18n.t('checkout.place_order'))
       
       expect(page).to have_current_path(checkout_path(:complete))
     end
@@ -77,22 +77,22 @@ feature 'Checkout' do
     scenario 'user can see the order details' do
             add_book_to_cart(book)
       
-      click_on('Checkout')
+      click_on(I18n.t('checkout.checkout'))
       fill_in_address_for('billing')
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
       choose('checkout_form[shipment_id]')
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
       fill_in_credit_card
-      click_on('Save and continue')
+      click_on(I18n.t('checkout.next_step'))
       
-      click_on('Place Order')
+      click_on(I18n.t('checkout.place_order'))
       
-      expect(page).to have_content('Shipping address')
-      expect(page).to have_content('Billing address')
-      expect(page).to have_content('Shipments')
-      expect(page).to have_content('Payment Information')
+      expect(page).to have_content(I18n.t('checkout.shipping_address'))
+      expect(page).to have_content(I18n.t('checkout.billing_address'))
+      expect(page).to have_content(I18n.t('checkout.shipments'))
+      expect(page).to have_content(I18n.t('checkout.payment_info'))
     end
   end
 end

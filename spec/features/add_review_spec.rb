@@ -12,7 +12,7 @@ feature 'Add review' do
     fill_in('Text review', with: 'Great book.')
     click_on('Add')
     
-    expect(page).to have_content('Review was successfully created.')
+    expect(page).to have_content(I18n.t('review.flashes.created'))
   end
   
   scenario 'user try add not valid review' do
@@ -22,13 +22,13 @@ feature 'Add review' do
     
     click_on('Add')
     
-    expect(page).to have_content("Text review can't be blank")
+    expect(page).to have_content(I18n.t('review.flashes.error'))
   end
   
   scenario 'no login user tries to add review' do
     visit(book_path(book))
     click_on('Leave a Review')
     
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to have_content(I18n.t('devise.failure.unauthenticated'))
   end
 end

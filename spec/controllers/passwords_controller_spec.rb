@@ -22,7 +22,7 @@ RSpec.describe Users::PasswordsController, type: :controller do
       end
       
       it 'sends success notice' do
-        expect(flash[:notice]).to eq 'Password was successfully updated.'
+        expect(flash[:notice]).to eq I18n.t('user.flashes.password_updated')
       end
       
       it 'redirect to settings page' do

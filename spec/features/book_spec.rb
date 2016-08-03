@@ -14,7 +14,7 @@ feature 'Book' do
   scenario 'user can add book to shopping cart' do
     visit(book_path(book))
     
-    click_on('ADD TO CART')
+    click_on(I18n.t('cart.add_to_cart'))
     
     expect(page).to have_current_path(cart_path)
     expect(page).to have_content(book.title)

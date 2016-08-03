@@ -7,7 +7,7 @@ feature 'User sign in' do
     scenario 'Registered user try to sign in' do
       sign_in(user)
       
-      expect(page).to have_content('Signed in successfully')
+      expect(page).to have_content(I18n.t('devise.sessions.signed_in'))
       expect(page).to have_current_path(root_path)
     end
   
@@ -26,7 +26,7 @@ feature 'User sign in' do
       sign_in(user)
       click_on('Sign out')
       
-      expect(page).to have_content('Signed out successfully.')
+      expect(page).to have_content(I18n.t('devise.sessions.signed_out'))
     end
   end
   
@@ -39,21 +39,20 @@ feature 'User sign in' do
     scenario 'user can sign in via facebook' do
       mock_auth_hash
 
-      click_on('Sign in')
-      expect(page).to have_content('Sign in with Facebook')
+      click_on(I18n.t('sign_in'))
+      expect(page).to have_content(I18n.t('devise.sign_in_facebook'))
 
-      click_on('Sign in with Facebook')
-      expect(page).to have_content('Successfully authenticated from Facebook account.')
+      click_on(I18n.t('devise.sign_in_facebook'))
+      expect(page).to have_content(I18n.t('devise.facebook_success'))
     end
     
     scenario 'with invalid credentials' do
       OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
 
-      click_on('Sign in')
-      click_on('Sign in with Facebook')
+      click_on(I18n.t('sign_in'))
+      click_on(I18n.t('devise.sign_in_facebook'))
 
-      expect(page).to have_content('Could not authenticate you from Facebook because "Invalid credentials"')
+      expect(page).to have_content(I18n.t('devise.facebook_error'))
     end
-
   end
 end

@@ -12,6 +12,6 @@ feature 'User sign up' do
 
       click_on('Sign up')
     end
-    expect(page).to have_content('You have signed up successfully.')
+    expect(page).to have_content((I18n.t('devise.registrations.signed_up'))
   end
 end
