@@ -70,6 +70,9 @@ RailsAdmin.config do |config|
     config.model 'Review' do
       edit do
         field :approved
+        field :text_review do
+          read_only true
+        end
       end
     end
 

@@ -55,4 +55,32 @@ feature 'User sign in' do
       expect(page).to have_content(I18n.t('devise.facebook_error'))
     end
   end
+  
+  context 'admin' do
+    given(:user) { create(:user, :admin) }
+    
+    scenario 'can see link to admin panel' do
+      sign_in(user)
+      
+      expect(page).to have_content(I18n.t('admin_title'))
+    end
+    
+    scenario 'can navigate to admin panel' do
+      sign_in(user)
+      click_on(I18n.t('admin_title'))
+      
+      expect(page).to have_current_path('/admin')
+    end
+  end
+  
+  context 'not admin' do
+    given(:user) { create(:user) }
+    
+    scenario 'can not see link to admin panel' do
+      sign_in(user)
+      
+      expect(page).not_to have_content(I18n.t('admin_title'))
+    end
+  end
+  
 end

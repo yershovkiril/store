@@ -9,6 +9,10 @@ RSpec.describe Address, type: :model do
     it { is_expected.to validate_presence_of(:city) }
     it { is_expected.to validate_presence_of(:phone) }
     it { is_expected.to validate_presence_of(:country) }
+    it { should allow_value('+380631234567').for(:phone) }
+    it { should_not allow_value("foo").for(:phone) }
+    it { should allow_value('123').for(:zip) }
+    it { should_not allow_value("foo").for(:zip) }
   end
   
   context "associations" do

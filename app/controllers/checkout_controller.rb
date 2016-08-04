@@ -3,6 +3,8 @@ class CheckoutController < ApplicationController
 
   before_action :check_order
   before_action :change_status_order, only: [:show]
+  after_action :set_maximum_step, only: [:update]
+  before_action :set_default_step
 
   steps :address, :delivery, :payment, :confirm, :complete
 
@@ -14,17 +16,37 @@ class CheckoutController < ApplicationController
 
   def update
     @checkout_form = CheckoutForm.new(checkout_form_params)
-    render_wizard(@checkout_form)
+    if @checkout_form.save
+      redirect_path = future_step?(get_max_step) ? wizard_path(get_max_step) : next_wizard_path 
+      redirect_to redirect_path
+    else
+      render_wizard
+    end
   end
 
   private
-
+  
   def change_status_order
     return unless step == :complete
     order_in_progress.create_order!
     session[:order_id] = nil
+    cookies[:max_step] = :address
+  end
+  
+  def set_default_step
+    cookies[:max_step] ||= :address
+  end
+  
+  def get_max_step
+    cookies[:max_step].to_sym
   end
 
+  def set_maximum_step
+    max_index = wizard_steps.index(get_max_step)
+    current_index = wizard_steps.index(step)
+    cookies[:max_step] = wizard_steps[max_index + 1] if max_index.eql? current_index
+  end
+  
   def check_order
     redirect_to cart_path if order_in_progress.empty?
   end

@@ -1,6 +1,6 @@
 .row
   .col-md-6
-    = form_for(current_user, url: { action: :update }) do |f|
+    = form_for(current_user, url: { action: :update }, html: {class: 'billing'}) do |f|
       %h3.page-header= t('user.settings.billing_address')
 
       = error_messages_for(current_user.billing_address)
@@ -9,7 +9,7 @@
       = f.submit t('user.settings.save'), class: "btn btn-primary"
 
   .col-md-6
-    = form_for(current_user, url: { action: :update }) do |f|
+    = form_for(current_user, url: { action: :update }, html: {class: 'shipping'}) do |f|
       %h3.page-header= t('user.settings.shipping_address')
 
       = error_messages_for(current_user.shipping_address)

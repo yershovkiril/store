@@ -7,7 +7,7 @@ FactoryGirl.define do
     address FFaker::Address.street_address
     zip FFaker::AddressUS.zip_code
     city FFaker::Address.city
-    phone FFaker::PhoneNumber.phone_number
+    phone '+380631234567'
     country
   end
 end

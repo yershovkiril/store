@@ -20,6 +20,7 @@ en:
         password: Password
         password_confirmation: Password confirmation
         current_password: Current password
+  admin_title: Admin
   book: Book
   title: The Bookstore
   welcome: Welcome to our amazing Bookstore! Choose anything you wish, we'll ship it anywhere
@@ -59,6 +60,9 @@ en:
     remember_me: Remember me
     sign_up: Sign up
     fogot_password: Forgot your password?
+    sign_in_facebook: Sign in with Facebook
+    facebook_success: Successfully authenticated from Facebook account.
+    facebook_error: 'Could not authenticate you from Facebook because "Invalid credentials"'
   order:
     price: 'Price:'
     quantity: Quantity
@@ -112,6 +116,7 @@ en:
     text_review: Text review
     flashes:
       created: 'Review was successfully created.'
+      error: "Text review can't be blank"
   wicked:
     address: Address
     delivery: Delivery

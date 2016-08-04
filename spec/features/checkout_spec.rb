@@ -75,7 +75,7 @@ feature 'Checkout' do
   
   context 'step complete' do
     scenario 'user can see the order details' do
-            add_book_to_cart(book)
+      add_book_to_cart(book)
       
       click_on(I18n.t('checkout.checkout'))
       fill_in_address_for('billing')
@@ -93,6 +93,27 @@ feature 'Checkout' do
       expect(page).to have_content(I18n.t('checkout.billing_address'))
       expect(page).to have_content(I18n.t('checkout.shipments'))
       expect(page).to have_content(I18n.t('checkout.payment_info'))
+    end
+  end
+  
+  context 'save maximum step' do
+    scenario 'user can return to the previous step and then back to max step' do
+      add_book_to_cart(book)
+      
+      click_on('Checkout')
+      fill_in_address_for('billing')
+      click_on(I18n.t('checkout.next_step'))
+      
+      choose('checkout_form[shipment_id]')
+      click_on(I18n.t('checkout.next_step'))
+      
+      fill_in_credit_card
+      click_on(I18n.t('checkout.next_step'))
+      
+      click_on(I18n.t('wicked.address'))
+      click_on(I18n.t('checkout.next_step'))
+      
+      expect(page).to have_current_path(checkout_path(:confirm))
     end
   end
 end

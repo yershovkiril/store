@@ -7,7 +7,8 @@
       %li.cart= render('shared/cart')
     - if user_signed_in?
       %ul.nav.navbar-nav.navbar-right
-        %li.settings= link_to t('setings.setings'), edit_user_path
+        %li.admin= link_to t('admin_title'), '/admin' if current_user.admin
+        %li.settings= link_to t('settings.settings'), edit_user_path
         %li.orders= link_to t('orders'),  orders_path
         %li= link_to t('sign_out'), destroy_user_session_path, :method => :delete
     - else 

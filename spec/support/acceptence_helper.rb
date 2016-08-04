@@ -26,7 +26,7 @@ module AcceptenceHelper
     fill_in "#{address}_address", with: FFaker::Address.street_address
     fill_in "#{address}_city", with: FFaker::Address.city
     fill_in "#{address}_zip", with: FFaker::AddressUS.zip_code
-    fill_in "#{address}_phone", with: FFaker::PhoneNumber.phone_number
+    fill_in "#{address}_phone", with: '+380631234567'
     select country.name, from: "#{address}_country_id"
   end
   
