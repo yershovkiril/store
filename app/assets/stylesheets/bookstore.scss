@@ -121,12 +121,27 @@ span.author {
   display: block;
 }
 
-input[type="radio"], 
-#checkout_form_use_billing {
+input[type="radio"] {
   position: absolute;
   left: -40px;
 }
 
+#checkout_form_use_billing {
+  position: absolute;
+  left: 130px;
+}
+
 p.margin {
   margin: 0px 0 25px;
+}
+
+.submit-button {
+  width: 250px;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 25px;
+}
+
+#use_billing {
+  position: relative;
 }

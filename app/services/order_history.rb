@@ -8,7 +8,7 @@ class OrderHistory
   end
 
   def orders_in_queue
-    orders.in_queue.decorate
+    orders.in_queue.where("ref IS NOT NULL").decorate
   end
 
   def orders_in_delivery
