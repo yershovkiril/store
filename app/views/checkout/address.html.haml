@@ -5,7 +5,7 @@
   .row
     .col-md-9
       = form_for(@checkout_form, url: wizard_path, method: :put) do |f|
-        .col-md-6
+        .col-md-6.billing
           = f.fields_for :billing_address do |bill_form|
             %h3.page-header= t('checkout.billing_address')
   
@@ -13,7 +13,7 @@
             %p.margin
             = render('address/form', f: bill_form)
   
-        .col-md-6
+        .col-md-6.shipping
           = f.fields_for :shipping_address do |ship_form|
             %h3.page-header= t('checkout.shipping_address')
   

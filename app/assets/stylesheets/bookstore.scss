@@ -145,3 +145,8 @@ p.margin {
 #use_billing {
   position: relative;
 }
+
+.require-field:after {
+  content: "*";
+  color: red;
+}
