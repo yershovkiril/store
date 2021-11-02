@@ -1,0 +1,28 @@
+.container
+  .row
+    %h1= t('h .orders.orders')
+    
+    %h3.page-header= t('user.orders.in_progress')
+    - if @history.orders_in_progress.empty?
+      %p= t('user.orders.empty_in_progress')
+    - else
+      = render('orders/order_in_progress', order: @history.orders_in_progress)
+      = link_to t('user.orders.go_to_cart'), cart_path, class: 'btn btn-success'
+    
+    %h3.page-header= t('user.orders.in_queue')
+    - if @history.orders_in_queue.empty?
+      %p= t('user.orders.empty_completed')
+    - else
+      = render('orders/order_details', orders: @history.orders_in_queue)
+    
+    %h3.page-header= t('user.orders.in_delivery')
+    - if @history.orders_in_delivery.empty?
+      %p= t('user.orders.empty_completed')
+    - else
+      = render('orders/order_details', orders: @history.orders_in_delivery)
+    
+    %h3.page-header= t('user.orders.delivered')
+    - if @history.orders_delivered.empty?
+      %p= t('user.orders.empty_completed')
+    - else
+      = render('orders/order_details', orders: @history.orders_delivered)

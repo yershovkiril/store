@@ -1,0 +1,27 @@
+= provide(:title, @book.title)
+.container
+  .row
+    .col-xs-4
+      = image_tag(@book.image, class: 'img-responsive preview')
+    .col-xs-8  
+      .caption-full
+        %h1.title= @book.title
+        %span.author by #{@book.author_name}
+        %p= @book.full_description
+        %p.price-p
+          %span.price= t('order.price')
+          = number_to_currency(@book.price)
+          = render('books/cart_form', book: @book)
+  .row
+    .text-left
+      %h3.col-sx-12= t('review.review')
+      .span= link_to(t('review.new'), new_book_review_path(@book), class: 'btn btn-success')
+    %hr/
+    - @book.reviews.each do |review|
+      .row
+        .col-md-12
+          = render_star(review.rating)
+          %span.pull-right= time_tag(review.created_at.to_date)
+          %p by #{review.user.email}
+          %p= review.text_review
+      %hr/

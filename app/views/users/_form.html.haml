@@ -1,0 +1,47 @@
+.row
+  .col-md-6
+    = form_for(current_user, url: { action: :update }, html: {class: 'billing'}) do |f|
+      %h3.page-header= t('user.settings.billing_address')
+
+      = error_messages_for(current_user.billing_address)
+      = f.fields_for :billing_address do |bill_form|
+        = render('address/form', f: bill_form)
+      = f.submit t('user.settings.save'), class: "btn btn-primary"
+
+  .col-md-6
+    = form_for(current_user, url: { action: :update }, html: {class: 'shipping'}) do |f|
+      %h3.page-header= t('user.settings.shipping_address')
+
+      = error_messages_for(current_user.shipping_address)
+      = f.fields_for :shipping_address do |bill_form|
+        = render('address/form', f: bill_form)
+      = f.submit t('user.settings.save'), class: "btn btn-primary"
+.row
+  .col-md-6
+    = form_for(current_user, url: { action: :update }) do |f|
+      %h3.page-header= t('user.settings.email')
+
+      = error_messages_for(current_user, 'email')
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: 'form-control'
+      = f.submit t('user.settings.save'), class: "btn btn-primary"
+ 
+  .col-md-6
+    = form_for(current_user, url: { :action => "update", :controller => "users/passwords" }) do |f|
+      %h3.page-header= t('user.settings.password')
+
+      = error_messages_for(current_user, 'password')
+      .form-group
+        = f.label :password
+        = f.password_field :password, :autocomplete => 'off', class: 'form-control'
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
+      - if f.object.encrypted_password.present?
+        .form-group
+          = f.label :current_password
+          = f.password_field :current_password, class: 'form-control'
+      = f.submit t('user.settings.save'), class: "btn btn-primary"
+.row
+  %p

@@ -1,0 +1,9 @@
+.table-responsive
+  %table.table.cart
+    %thead
+      %th= t('order.number')
+      %th= t('order.completed_at')
+      %th= t('order.total')
+    %tbody
+      - orders.each do |order|
+        = render 'order_info', order: order

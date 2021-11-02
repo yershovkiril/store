@@ -1,0 +1,18 @@
+.container
+  .col-md-12.book-slider
+    %ul.bxslider
+      - @best_books.each_with_index do |book, index|
+        %li
+          .col-xs-4
+            = image_tag(book.image, class: 'image-responsive preview')
+          .col-xs-8.book-info
+            %h1.title= link_to(book.title, book)
+            %span.author by #{book.author_name}
+            %p= book.description
+            %p.price-p
+              %span.price= t('books.price')
+              = number_to_currency(book.price)
+              = render('books/cart_form', book: book)
+  .starter-template.text-center
+    %h3= t('welcome')
+          

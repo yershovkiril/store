@@ -1,0 +1,18 @@
+%header.navbar.navbar-fixed-top.navbar-inverse
+  .container
+    = link_to t('title'), root_path, id: "logo"
+    %ul.nav.navbar-nav.navbar-left
+      %li.home= link_to t('home'), root_path
+      %li.shop= link_to t('shop'), books_path
+      %li.cart= render('shared/cart')
+    - if user_signed_in?
+      %ul.nav.navbar-nav.navbar-right
+        %li.admin= link_to t('admin_title'), '/admin' if current_user.admin
+        %li.settings= link_to t('settings.settings'), edit_user_path
+        %li.orders= link_to t('orders'),  orders_path
+        %li= link_to t('sign_out'), destroy_user_session_path, :method => :delete
+    - else 
+      %ul.nav.navbar-nav.navbar-right
+        %li.sign-in= link_to t('sign_in'), new_user_session_path 
+        %li.sign-up= link_to t('sign_up'), new_user_registration_path
+      

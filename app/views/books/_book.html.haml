@@ -1,0 +1,6 @@
+.col-sm-3.col-lg-3.col-md-3
+  .thumbnail
+    = image_tag(book.image)
+    .caption
+      %h4.book= link_to(book.title, book)
+      %h4= number_to_currency(book.price)

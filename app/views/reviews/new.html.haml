@@ -1,0 +1,7 @@
+.container
+  .col-md-9
+    %h1 
+      = t('review.review_for')
+      = link_to(@book.title, @book)
+  
+    = render('form')

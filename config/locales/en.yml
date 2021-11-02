@@ -1,0 +1,139 @@
+en:
+  activerecord:
+    attributes:
+      address:
+        address: Address
+        city: City
+        country: Country
+        firstname: First Name
+        lastname: Last Name
+        phone: Phone
+        zipcode: Zip Code
+      credit_card:
+        number: Card number
+        cvv: CVV code
+        month: Month
+        year: Year
+      user:
+        username: Username
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+        current_password: Current password
+  admin_title: Admin
+  book: Book
+  title: The Bookstore
+  welcome: Welcome to our amazing Bookstore! Choose anything you wish, we'll ship it anywhere
+  home: HOME
+  shop: SHOP
+  settings: Settings
+  orders: Orders
+  order_title: Order
+  sign_out: Sign out
+  sign_in: Sign in
+  sign_up: Sign up
+  menu_title: Shop by category
+  user:
+    orders:
+      in_progress: IN PROGRESS
+      in_queue: WAITING FOR PROCESSING
+      in_delivery: IN DELIVERY
+      delivered: DELIVERED
+      orders: Orders
+      go_to_cart: GO TO CART
+      empty_in_progress: There are not orders in progress.
+      empty_completed: There are not orders for processing.
+    settings:
+      settings: Settings
+      billing_address: Billing address
+      shipping_address: Shipping address
+      email: Email
+      password: Password
+      remove_account: Remove account
+      cancel_account: Cancel my account
+      save: Save
+    flashes:
+      account_updated: 'Account was successfully updated.'
+      password_updated: 'Password was successfully updated.'
+  devise:
+    log_in: Log in
+    remember_me: Remember me
+    sign_up: Sign up
+    fogot_password: Forgot your password?
+    sign_in_facebook: Sign in with Facebook
+    facebook_success: Successfully authenticated from Facebook account.
+    facebook_error: 'Could not authenticate you from Facebook because "Invalid credentials"'
+  order:
+    price: 'Price:'
+    quantity: Quantity
+    total: Total
+    order_total: 'Order Total:'
+    subtotal: 'Subtotal:'
+    discount: 'Discount:'
+    shipping: 'Shipping:'
+    view: view
+    number: Number
+    completed_at: Completed at
+  books:
+    price: Price
+  cart:
+    add_to_cart: ADD TO CART
+    quantity: Quantity
+    cart: CART
+    empty: Empty cart
+    continue: Continue shopping
+    code: Coupon code
+    update: Update
+    shopping_cart: Shopping cart
+  credit_card:
+    expiration_date: Expiration date
+    month: Month
+    year: Year
+  checkout:
+    checkout: Checkout
+    billing_address: Billing address
+    shipping_address: Shipping address
+    use_billing: Use Billing Address
+    next_step: Save and continue
+    order_summury: Order summary
+    item_total: 'Item total:'
+    ship_price: 'Shipping:'
+    order_discount: 'Discount:'
+    order_total: 'Order total:'
+    ship_methods: Shipping methods
+    credit_card: Credit Card
+    place_order: Place Order
+    shipments: Shipments 
+    payment_info: Payment Information
+    phone: Phone
+    back_to_store: Go back to store
+  review:
+    add: Add
+    cancel: Cancel
+    new: Leave a Review
+    review_for: New review for
+    review: Reviews
+    text_review: Text review
+    flashes:
+      created: 'Review was successfully created.'
+      error: "Text review can't be blank"
+  wicked:
+    address: Address
+    delivery: Delivery
+    payment: Payment
+    confirm: Confirm
+    complete: Complete
+  date:
+    formats:
+      default:
+        "%m/%d/%Y"
+      with_weekday:
+        "%a %m/%d/%y"
+  time:
+    formats:
+      default:
+        "%a, %b %-d, %Y at %r"
+      date:
+        "%b %-d, %Y"
+      short:
+        "%B %d"

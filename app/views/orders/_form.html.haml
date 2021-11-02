@@ -1,0 +1,33 @@
+= form_for(@order) do |f|
+  = error_messages_for @order
+  .table-responsive
+    %table.table.cart
+      %thead
+        %tr
+          %th.text-center{:colspan => "2"} Book
+          %th Price
+          %th Count
+          %th{:colspan => "2"} Total
+      %tbody
+        = render partial: "order_book", collection: @order.order_books, locals: { f: f}
+      %tfoot
+        %tr
+          %td{colspan: "4", align: "right"}
+            %b Subtotal:
+          %td= number_to_currency(@order.total)
+      - if @order.coupon
+        %tfoot
+          %tr
+            %td{colspan: "4", align: "right"}
+              %b Discount:
+            %td= number_to_currency(@order.coupon_discount)
+  .box-footer
+    .pull-left
+      = link_to t('cart.empty'), empty_cart_path, method: :patch, class: "btn btn-default"
+      = link_to t('cart.continue'), books_path, class: "btn btn-default"
+        
+    .pull-right
+      .form-inline
+        = f.text_field :code, placeholder: t('cart.code'), class: 'form-control coupon'
+        = f.submit t('cart.update'), class: "btn btn-success update"
+        = f.submit t('checkout.checkout'), name: 'checkout', class: "btn btn-primary checkout"
